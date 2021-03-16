@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>WebSockets - Viewer Sync Demo</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="./openseadragon/openseadragon.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+
+    <style>
+      .seadragon-viewer {
+        display: inline-block;
+        width: 105%;
+        height: 600px;
+      }
+    </style>
+  </head>
+  <body>
+    <div>
+      <nav
+        class="navbar navbar-expand-lg navbar-light"
+        style="background-color: #9a2ca0; color: white"
+      >
+        <a class="navbar-brand" href="#" style="color: white"
+          ><h4>
+            <img
+              style="margin: 0px 10px 4px 10px"
+              src="https://img.icons8.com/color/40/000000/connection-sync.png"
+            />Cross Coordinated Viewing
+          </h4></a
+        >
+      </nav>
+    </div>
+    <div class="row">
+      <div class="col-3">
+        <div style="margin-left: 30px">
+          <h6 style="margin: 30px 0px 20px 0px">
+            <img
+              src="https://img.icons8.com/plasticine/48/000000/settings.png"
+            />Choose Preference
+          </h6>
+          <ul class="list-group">
+            <li class="list-group-item">
+              Sync Instances
+              <div
+                class="form-check form-check-inline"
+                style="margin: 15px 10px"
+              >
+                <input
+                  class="form-check-input"
+                  type="checkbox"
+                  id="syncCheckbox"
+                  onclick="syncInstances()"
+                />
+                <label class="form-check-label" for="inlineCheckbox1"
+                  >Check to sync instances</label
+                >
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="col">
+        <div style="margin: 50px">
+          <div id="navigation-pane" style="display: inline-block">
+            <img
+              id="zoom-in"
+              src="https://img.icons8.com/color/30/000000/zoom-in--v1.png"
+            />
+            <img
+              id="zoom-out"
+              src="https://img.icons8.com/color/30/000000/zoom-out.png"
+            />
+            <img
+              id="home"
+              src="https://img.icons8.com/color/30/000000/home.png"
+            />
+            <img
+              id="full-screen"
+              src="https://img.icons8.com/color/30/000000/toggle-full-screen.png"
+            />
+            <img
+              id="rotate-left"
+              onclick="rotateLeft(viewer1,viewer2)"
+              src="https://img.icons8.com/color/30/000000/rotate-left--v1.png"
+            />
+            <img
+              id="rotate-right"
+              onclick="rotateRight(viewer1,viewer2)"
+              src="https://img.icons8.com/color/30/000000/rotate-right.png"
+            />
+          </div>
+          <div id="viewer1" class="seadragon-viewer"></div>
+        </div>
+      </div>
+      <div class="col">
+        <div style="margin: 50px">
+          <div id="navigation-pane-2">
+            <img
+              id="zoomIn"
+              src="https://img.icons8.com/color/30/000000/zoom-in--v1.png"
+            />
+            <img
+              id="zoomOut"
+              src="https://img.icons8.com/color/30/000000/zoom-out.png"
+            />
+            <img
+              id="Home"
+              src="https://img.icons8.com/color/30/000000/home.png"
+            />
+            <img
+              id="fullScreen"
+              src="https://img.icons8.com/color/30/000000/toggle-full-screen.png"
+            />
+            <img
+              id="rotate-left"
+              onclick="rotateLeft(viewer2,viewer1)"
+              src="https://img.icons8.com/color/30/000000/rotate-left--v1.png"
+            />
+            <img
+              id="rotate-right"
+              onclick="rotateRight(viewer2,viewer1)"
+              src="https://img.icons8.com/color/30/000000/rotate-right.png"
+            />
+          </div>
+          <div id="viewer2" class="seadragon-viewer"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- <img id="help" src="https://img.icons8.com/doodle/48/000000/help.png" /> -->
+
+    <!-- <h1 id="thisiszoom">Hello</h1> -->
+
+    <script src="./script.js"></script>
+  </body>
+</html>
